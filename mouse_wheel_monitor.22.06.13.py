@@ -9,6 +9,9 @@ import gpiozero
 from time import sleep, perf_counter
 import datetime
 
+__author__ = 'nickvpinkham@gmail.com'
+__version__ = '22.06.13'
+
 
 SENSOR_PIN = 3  # GPIO3 on Raspi4
 
