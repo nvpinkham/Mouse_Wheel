@@ -45,10 +45,12 @@ class WheelSensor():
         return self._pin.value
     #end def
     
+    
     def now(self):
         return self.now
     #end def
     
+
     @property
     def count(self) -> int:
         return self._count
@@ -67,13 +69,14 @@ class WheelSensor():
         return rpm
     #end def
     
+
     @property
     def now(self) -> float:
         now = datetime.datetime.now()
         return now
-    #end def
-        
+    #end def      
 #end class
+
 
 def do_monitor_mouse_wheel():
     
@@ -92,30 +95,25 @@ def do_monitor_mouse_wheel():
         # print("Current", wheel_sensor.count)
         # print("Previous", prevcount)
         
-        if(prevcount != wheel_sensor.count):
-            
+        if prevcount != wheel_sensor.count:            
             print(f'{wheel_sensor.count} {wheel_sensor.now}')
-
-            
+       
             tdiff = datetime.datetime.now() - when_last_checked
             when_last_checked = datetime.datetime.now()
 
             #print(tdiff)
             
-            if(tdiff > datetime.timedelta(0, 2)):
-            
+            if tdiff > datetime.timedelta(0, 2):           
                 print("smile you're on camera")
                 os.system('raspistill -ex night -w 640 -h 480 -n -t 1000 -o pics/'+ str(wheel_sensor.count) + 'new_spin.jpg')
                 
-            if(wheel_sensor.count % 100 == 0):
-            
+            if wheel_sensor.count % 100 == 0 :    
                  print("smile you're on camera")
                  os.system('raspistill -ex night -w 640 -h 480 -n -t 1000 -o pics/'+ str(wheel_sensor.count) + 'Interval.jpg')    
 
             else:
                 print("thinking its the same mouse")
-            
-            
+                       
         prevcount = wheel_sensor.count
     #end while
 #end def
