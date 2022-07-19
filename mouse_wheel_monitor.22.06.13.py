@@ -106,7 +106,8 @@ def do_monitor_mouse_wheel():
             if tdiff > datetime.timedelta(0, 2):           
                 print("smile you're on camera")
                 os.system('raspistill -ex night -w 640 -h 480 -n -t 1000 -o pics/'+ str(wheel_sensor.count) + 'new_spin.jpg')
-                
+                os.system('raspistill -ex night -w 640 -h 480 -n -t 1000 -o pics2/'+ str(wheel_sensor.count) + 'new_spin.jpg')
+   
             if wheel_sensor.count % 100 == 0 :    
                  print("smile you're on camera")
                  os.system('raspistill -ex night -w 640 -h 480 -n -t 1000 -o pics/'+ str(wheel_sensor.count) + 'Interval.jpg')    
